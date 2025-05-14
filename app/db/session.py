@@ -6,9 +6,7 @@ engine = create_engine(settings.database_url, echo=settings.debug)
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-from sqlalchemy.orm import declarative_base
 
-Base = declarative_base()
 
 
 
