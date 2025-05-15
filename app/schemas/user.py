@@ -1,4 +1,5 @@
 from pydantic import BaseModel, EmailStr, Field
+from typing_extensions import Optional
 
 class UserBase(BaseModel):
     email: EmailStr
@@ -13,5 +14,10 @@ class UserRead(UserBase):
     class Config:
         orm_mode = True
 
+class UserUpdate(BaseModel):
+    email: Optional[EmailStr] = None
+    is_active: Optional[bool] = None
+
 class UserInDB(UserRead):
     hashed_password: str
+
