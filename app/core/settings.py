@@ -1,4 +1,4 @@
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
     db_host: str
@@ -13,6 +13,10 @@ class Settings(BaseSettings):
     def database_url(self) -> str:
         return f"postgresql://{self.db_user}:{self.db_password}@{self.db_host}:{self.db_port}/{self.db_name}"
 
-    model_config = SettingsConfigDict(env_file=".env")
+    model_config = {
+        "env_file": ".env",
+        "from_attributes": True,
+        "extra": "forbid"
+    }
 
 settings = Settings()
