@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from app.api import users
-app = FastAPI()
+app = FastAPI(debug=True)
 
 @app.get("/")
 async def root():
