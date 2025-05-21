@@ -15,7 +15,6 @@ class UserRead(UserBase):
         "from_attributes": True
     }
 
-
 class UserUpdate(BaseModel):
     email: Optional[EmailStr] = None
     is_active: Optional[bool] = None
