@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from app.models import Product
 from app.schemas.product import ProductCreate
 
-def get_product(db: Session, product_id: int):
+def get_product_by_id(db: Session, product_id: int):
     return db.query(Product).filter(Product.id == product_id).first()
 
 def get_products(db:Session, skip: int = 0, limit: int = 100):
@@ -20,7 +20,7 @@ def create_product(db:Session, product: ProductCreate, owner_id: int):
     return db_product
 
 def update_product(db:Session, name: str, description: str,price:float, product_id: int):
-    product = get_product(db, product_id)
+    product = get_product_by_id(db, product_id)
     if not product:
         return None
     product.name = name
@@ -31,7 +31,7 @@ def update_product(db:Session, name: str, description: str,price:float, product_
     return product
 
 def delete_product(db:Session, product_id:int):
-    product = get_product(db,product_id)
+    product = get_product_by_id(db, product_id)
     if not product:
         return None
     db.delete(product)
