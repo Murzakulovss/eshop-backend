@@ -3,6 +3,7 @@ from fastapi import APIRouter,HTTPException
 from fastapi.params import Depends
 from sqlalchemy.orm import Session
 
+from app.api.routers.auth import get_current_user
 from app.db.session import get_db
 
 from app.crud.product import (
@@ -12,15 +13,14 @@ from app.crud.product import (
     update_product as update_product_crud,
     delete_product as delete_product_crud
 )
+from app.models import User
 from app.schemas.product import ProductRead, ProductCreate, ProductUpdate
 
 router = APIRouter()
 
-#create after AUTH
-
-#@router.post("/",response_model=ProductRead)
-#async def create_product(product: ProductCreate, db: Session= Depends(get_db)):
-#return create_product_crud(db=db, product=product, owner_id=)
+@router.post("/",response_model=ProductRead)
+async def create_product(product: ProductCreate, db: Session= Depends(get_db), current_user: User = Depends(get_current_user)):
+    return create_product_crud(db=db, product=product, owner_id=current_user.id)
 
 @router.get("/{product_id}", response_model= ProductRead)
 async def read_product(product_id: int, db: Session = Depends(get_db)):
@@ -34,7 +34,7 @@ async def get_products(limit: int = 100,skip:int=0, db: Session = Depends(get_db
     return get_products_crud(db=db, limit=limit, skip=skip)
 
 @router.put("/{product_id}", response_model=ProductRead)
-async def update_product(product_update: ProductUpdate, product_id:int, db:Session= Depends(get_db)):
+async def update_product(product_update: ProductUpdate, product_id:int, db:Session = Depends(get_db)):
     updated_product = update_product_crud(db=db,product_id=product_id,name=product_update.name, description=product_update.description, price=product_update.price)
     if not updated_product:
         raise HTTPException(status_code=404, detail="Updating product not found")
