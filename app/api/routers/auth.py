@@ -7,7 +7,7 @@ from app.db.session import get_db
 from fastapi.security import OAuth2PasswordBearer
 from jose import jwt
 router = APIRouter()
-oauth2_scheme = OAuth2PasswordBearer("login")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/login")
 execution_401 = HTTPException(status_code=401, detail="Invalid email or password")
 
 @router.post("/login")
