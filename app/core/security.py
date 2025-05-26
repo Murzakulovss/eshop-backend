@@ -1,9 +1,11 @@
+import os
+from app.core.settings import settings
 from passlib.context import CryptContext
 from jose import jwt
 from datetime import datetime, timedelta, timezone
 
-SECRET_KEY = "your_secret_key_should_be_long_and_random"
-ALGORITHM = "HS256"
+SECRET_KEY = settings.secret_key
+ALGORITHM = os.getenv("ALGORITHM", "HS256")
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
