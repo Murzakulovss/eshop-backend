@@ -1,13 +1,13 @@
-from itertools import product
 from fastapi import FastAPI
-from app.api.routers import users,auth,product
+from app.api.routers import users, product
+from app.auth import auth
 from fastapi.openapi.utils import get_openapi
 
 app = FastAPI(debug=True)
 
 @app.get("/")
 async def root():
-    return {"message": "Hello World"}
+    return {"message": "Eshop"}
 
 app.include_router(users.router, prefix="/users", tags=["users"])
 app.include_router(product.router, prefix="/products", tags=["products"])
