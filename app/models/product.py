@@ -1,7 +1,6 @@
 from sqlalchemy import Column, Integer, String, Boolean, Float, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, foreign, relationship
 
-from app.models import User
 from app.models.base import Base
 
 class Product(Base):
