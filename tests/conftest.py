@@ -28,3 +28,4 @@ def auth_header(test_user, client):
     response = client.post("/login", data={"username": test_user["email"], "password": "string"})
     token = response.json()["access_token"]
     return {"Authorization": f"Bearer {token}"}
+
