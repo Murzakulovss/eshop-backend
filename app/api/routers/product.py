@@ -3,7 +3,7 @@ from fastapi import APIRouter,HTTPException
 from fastapi.params import Depends
 from sqlalchemy.orm import Session
 
-from app.auth.auth import get_current_user
+from app.api.routers.auth.auth import get_current_user
 from app.db.session import get_db
 
 from app.crud.product import (
