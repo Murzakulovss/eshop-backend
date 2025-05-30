@@ -2,7 +2,6 @@ Eshop is a backend project for an online store. It includes:
 User registration and authentication (JWT)
 Full CRUD operations for products
 
--
 Tech stack:
 -
 
@@ -15,7 +14,7 @@ Tech stack:
 -Pytest (tests)
 -Docker (optional)
 
--
+
 Installation:
 -
 
@@ -26,7 +25,6 @@ cp .env.example .env
 alembic upgrade head
 poetry run uvicorn app.main:app --reload
 
--
 .env example
 -
 
@@ -37,7 +35,6 @@ DB_USER=eshop_user
 DB_PASSWORD=supersecret
 SECRET_KEY=your_secret_key
 
--
 tests
 -
 
