@@ -3,7 +3,7 @@ from fastapi import APIRouter,HTTPException
 from fastapi.params import Depends
 from sqlalchemy.orm import Session
 
-from app.api.routers.auth.auth import get_current_user
+from app.interfaces.routers.auth.auth import get_current_user
 from app.db.session import get_db
 
 from app.crud.product import (
@@ -13,8 +13,8 @@ from app.crud.product import (
     update_product as update_product_crud,
     delete_product as delete_product_crud
 )
-from app.models import User
-from app.schemas.product import ProductRead, ProductCreate, ProductUpdate
+from app.domain.models import User
+from app.interfaces.schemas.product import ProductRead, ProductCreate, ProductUpdate
 
 router = APIRouter()
 

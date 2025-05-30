@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from app.core.security import hash_password
-from app.models.user import User
-from app.schemas.user import UserCreate
+from app.domain.models.user import User
+from app.interfaces.schemas.user import UserCreate
 from fastapi import HTTPException, status
 
 exception404 = HTTPException(status_code=404, detail="User not found")

@@ -1,9 +1,9 @@
-from sqlalchemy import Column, Integer, String, Boolean, Float, ForeignKey
-from sqlalchemy.orm import Mapped, mapped_column, foreign, relationship
+from sqlalchemy import String, Float, ForeignKey
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from app.models.base import Base
+from app.domain.models.base import Base
 
-class Product(Base):
+class ProductORM(Base):
     __tablename__ = "products"
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(String(30))

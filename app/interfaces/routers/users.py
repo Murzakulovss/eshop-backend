@@ -10,7 +10,7 @@ from app.crud.user import (
     delete_user as delete_user_crud,
 )
 from app.db.session import get_db
-from app.schemas.user import UserCreate, UserRead, UserUpdate
+from app.interfaces.schemas.user import UserCreate, UserRead, UserUpdate
 
 router = APIRouter()
 

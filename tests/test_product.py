@@ -1,6 +1,3 @@
-from http.client import responses
-from app.models import Product
-
 def create_product_test(client, auth_header, name, description, price):
     return client.post("/products/", headers = auth_header, json={
         "name": name,
