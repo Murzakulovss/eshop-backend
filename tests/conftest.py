@@ -4,7 +4,7 @@ from starlette.testclient import TestClient
 
 from app.db import SessionLocal
 from app.main import app
-from app.models import Product, User
+from app.domain.models import Product, User
 from tests.test_users import create_user
 
 @pytest.fixture(autouse=True)

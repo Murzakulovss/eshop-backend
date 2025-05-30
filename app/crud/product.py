@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 
-from app.models import Product
-from app.schemas.product import ProductCreate
+from app.domain.models import Product
+from app.interfaces.schemas.product import ProductCreate
 
 def get_product_by_id(db: Session, product_id: int):
     return db.query(Product).filter(Product.id == product_id).first()
