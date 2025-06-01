@@ -4,7 +4,7 @@ from app.domain.models.product import Product
 class ProductRepositoryInterface(ABC):
 
     @abstractmethod
-    def get_dy_id(self, product_id:int) -> Product:
+    def get_by_id(self, product_id:int) -> Product:
         pass
 
     @abstractmethod
