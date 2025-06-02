@@ -1,8 +1,9 @@
+from typing import List
+
 from sqlalchemy import String, Boolean
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.domain.models.base import Base
-from app.infrastucture.database.models.product import ProductORM
 
 class User(Base):
     __tablename__ = "users"
@@ -11,4 +12,5 @@ class User(Base):
     hashed_password: Mapped[str] = mapped_column(String(100))
     is_active: Mapped[bool] = mapped_column(Boolean, default=True)
 
-    products: Mapped[list["ProductORM"]] = relationship(back_populates="owner")
+    products: Mapped[List["ProductORM"]] = relationship("ProductORM", back_populates="owner")
+
