@@ -12,7 +12,7 @@ class CreateProductUseCase:
             price=price,
             owner_id=owner_id
         )
-        self.product_repository.create(product)
+        return self.product_repository.create(product)
 
 
 
