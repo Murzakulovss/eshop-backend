@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from app.domain.models.product import Product
+from app.interfaces.schemas.product import ProductUpdate
 
 class ProductRepositoryInterface(ABC):
 
@@ -12,7 +13,7 @@ class ProductRepositoryInterface(ABC):
         pass
 
     @abstractmethod
-    def update(self, product_id:int) -> None:
+    def update(self, product_id:int, update_data: ProductUpdate) -> None:
         pass
 
     @abstractmethod
