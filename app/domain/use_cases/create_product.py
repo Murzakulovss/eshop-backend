@@ -1,12 +1,12 @@
-from app.domain.models import Product
+from app.dto.product import ProductCreateDTO
+
 
 class CreateProductUseCase:
     def __init__(self, product_repository):
         self.product_repository = product_repository
 
     def execute(self, name: str, description: str, price: float, owner_id: int):
-        product = Product(
-            product_id=0,
+        product = ProductCreateDTO(
             name=name,
             description=description,
             price=price,
