@@ -4,7 +4,7 @@ from typing_extensions import Optional
 class ProductBase(BaseModel):
     name: str
     description: Optional[str] = None
-    price: int
+    price: float
 
 class ProductCreate(ProductBase):
     pass
@@ -13,7 +13,7 @@ class ProductRead(BaseModel):
     id: int
     name: str
     description: Optional[str] = None
-    price: int
+    price: float
     owner_id: int
 
     model_config = {
