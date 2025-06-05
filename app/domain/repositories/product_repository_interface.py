@@ -9,6 +9,10 @@ class ProductRepositoryInterface(ABC):
         pass
 
     @abstractmethod
+    def get_all(self, skip, limit) -> list[Product]:
+        pass
+
+    @abstractmethod
     def create(self, product) -> None:
         pass
 
