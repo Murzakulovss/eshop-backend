@@ -13,6 +13,11 @@ class ProductRepository(ProductRepositoryInterface, ABC):
     def __init__(self, db: Session):
         self.db = db
 
+    def get_all(self, skip: int = 0, limit: int = 100) -> list[Product]:
+        product_orm = self.db.query(ProductORM).offset(skip).limit(limit).all()
+        products = [to_domain(cast(ProductORM,prod)) for prod in product_orm]
+        return products
+
     def get_by_id(self, product_id:int) -> Product | None:
         product_orm = self.db.query(ProductORM).filter(ProductORM.id == product_id).first()
         if not product_orm:
