@@ -18,3 +18,4 @@ def from_domain(product: Product) -> ProductORM:
     price = product.price
     owner_id = product.owner_id
     return ProductORM(id=product_id, name=name, description=description, price=price, owner_id=owner_id)
+

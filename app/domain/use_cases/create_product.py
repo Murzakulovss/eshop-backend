@@ -1,6 +1,5 @@
 from app.dto.product import ProductCreateDTO
 
-
 class CreateProductUseCase:
     def __init__(self, product_repository):
         self.product_repository = product_repository
@@ -13,6 +12,4 @@ class CreateProductUseCase:
             owner_id=owner_id
         )
         return self.product_repository.create(product)
-
-
 
